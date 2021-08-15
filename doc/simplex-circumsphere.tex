@@ -1,0 +1,74 @@
+\documentclass[]{article}
+
+\usepackage{stmaryrd}
+
+\title{n-Simplex circumsphere}
+\author{Thomas HOULLIER}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We provide a short note on the computation of a n-simplex circumsphere. This is
+adapted from a blog post by Gautam Manohar.
+\end{abstract}
+
+Let:
+\begin{itemize}
+\item $n$ the dimensionality
+\item A simplex with $n+1$ vertices
+\item The vertices $V_i$, $i\in \llbracket 0, n \rrbracket$
+\item The coordinates of vertex $V_i$: $V_i^j$, $j\in\llbracket 1, n \rrbracket$
+\item The circumsphere with center $C$, with coordinates $C^j$, and radius $R$
+\end{itemize}
+
+Any vertex $V_i$ is on the circumsphere, so $\forall i$, it obeys eq
+(\ref{vertex-on-sphere}).
+
+\begin{equation} \label{vertex-on-sphere}
+\sum_j \left( V_i^j - C^j \right)^2 = R^2
+\end{equation}
+
+Arbitrarily, we take the first equation, for the first vertex $i=0$, and
+subtract it from all the others. Then $\forall i \in \llbracket 1, n
+\rrbracket$, we have eq (\ref{row-equations}) after some expansion and
+cancellation of terms.
+
+\begin{equation} \label{row-equations}
+2 \sum_j \left( V_0^j - V_i^j \right) \cdot C^j =
+  \sum_j \left( V_0^j \right)^2 - \sum_j \left( V_i^j \right)^2
+\end{equation}
+
+This is readily expressed in matrix format, with each $i$ being a row
+in a linear system of equations (\ref{matrix-system}).
+
+\begin{equation} \label{matrix-system}
+A \cdot x = b
+\end{equation}
+
+With:
+\begin{itemize}
+\item $A$ a square matrix with elements $A_{i,j}$ (\ref{a})
+\item $x$ the vector of $C^j$ coordinates.
+\item $b$ a right hand side vector defined by eq (\ref{b})
+\end{itemize}
+
+\begin{equation} \label{a}
+A_{i,j} = 2 \left( V_0^j - V_i^j \right)
+\end{equation}
+
+\begin{equation} \label{b}
+b_{i} = \sum_j \left( V_0^j \right)^2 - \sum_j \left( V_i^j \right)^2
+\end{equation}
+
+We can solve for $x = C$ using any linear equation solver. Next we can
+retrieve $R$ from the distance of any vertex from the center, for example
+eq (\ref{radius}).
+
+\begin{equation} \label{radius}
+R = \sqrt{\sum_j \left( V_0^j - C^j \right)^2}
+\end{equation}
+
+Thus, we have computed the center $C$ of the circumsphere, and $R$ its radius.
+
+\end{document}

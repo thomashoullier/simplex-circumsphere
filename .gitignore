@@ -6,3 +6,25 @@
 *.asd~
 *.lisp#
 .#*
+
+# Latex
+*.aux
+*.log
+*.pdf
+*.bbl
+*.blg
+*.out
+*.xwm
+*.toc
+*.swp
+*.fdb_latexmk
+*.fls
+*.bcf
+*.run.xml
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
