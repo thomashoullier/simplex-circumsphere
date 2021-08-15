@@ -1,7 +1,7 @@
 (defsystem simplex-circumsphere
   :name "simplex-circumsphere"
   :author "Thomas HOULLIER"
-  :depends-on ("mat-ops")
+  :depends-on ("lineq-solve")
   :components
   ((:module "src"
     :components ((:file "package")
