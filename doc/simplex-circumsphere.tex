@@ -1,6 +1,7 @@
 \documentclass[]{article}
 
 \usepackage{stmaryrd}
+\usepackage{amsmath}
 
 \title{n-Simplex circumsphere}
 \author{Thomas HOULLIER}
@@ -10,7 +11,9 @@
 
 \begin{abstract}
 We provide a short note on the computation of a n-simplex circumsphere. This is
-adapted from a blog post by Gautam Manohar.
+adapted from a blog post by Gautam Manohar and another blog post by G.
+Westendorp. Please note that I am not a mathematician and that I have not
+checked in depth the claims I make.
 \end{abstract}
 
 Let:
@@ -22,6 +25,7 @@ Let:
 \item The circumsphere with center $C$, with coordinates $C^j$, and radius $R$
 \end{itemize}
 
+\section{Method 1: Circumsphere equation}
 Any vertex $V_i$ is on the circumsphere, so $\forall i$, it obeys eq
 (\ref{vertex-on-sphere}).
 
@@ -71,4 +75,63 @@ R = \sqrt{\sum_j \left( V_0^j - C^j \right)^2}
 
 Thus, we have computed the center $C$ of the circumsphere, and $R$ its radius.
 
+\section{Method 2: Cayley-Menger matrix}
+As noted by Westendorp, building on a work by Coxeter (please refer to his
+blog post for the proof). We can compute the circumsphere of a simplex
+with the aid of the Cayley-Menger matrix. The Cayley-Menger matrix is
+given in eq \ref{cm}.
+
+\begin{equation} \label{cm}
+CM = \begin{bmatrix}
+0 & 1 & 1 & 1 & \dots \\
+1 & 0 & d_0^1 & d_0^2 & \dots \\
+1 & d_1^0 & 0 & d_1^2 & \dots \\
+1 & d_2^0 & d_2^1 & 0 & \dots \\
+\vdots & \vdots & \vdots & \vdots & \ddots
+\end{bmatrix}
+\end{equation}
+
+with $d_i^j = \sum_k \left( V_i^k - V_j^k \right)^2$, the squared distance
+between vertices $V_i$ and $V_j$.
+
+Then, the radius of the circumsphere is given by eq \ref{cm-radius}, the
+circumcenter by eq \ref{cm-coords} (please refer to the blog post by Westendorp
+for the proof).
+
+\begin{equation} \label{cm-radius}
+R = \sqrt{- \frac{1}{2} \cdot {CM^{-1}}_{1,1}}
+\end{equation}
+
+\begin{equation} \label{cm-coords}
+x_j = {CM^{-1}}_{1,j+1}
+\end{equation}
+
+Note that we only need the first row of the inverse $CM$ matrix, not the whole
+inverse. Also note that $CM$ is symmetric, which enables simpler decompositions
+for the inversion operation. $CM$ is \emph{indefinite} (proof omitted).
+Since $CM$ is square symmetric, but not positive-definite, the most efficient
+decomposition to perform the inverse, to the best of my knowledge is the
+Bunch–Kaufman decomposition, which is only slightly better than LUP.
+
+\section{Method tradeoff}
+Starting from a list of vertices coordinates $V_i^j$, which method is the most
+efficient computationally? Let's count operations to make sure.
+
+\begin{itemize}
+\item Method 1: \begin{itemize}
+\item $A$: $n^2$ subtractions
+\item $b$: $n(n+1)$ squares, $(n-1)(n+1)$ sums, $n$ subtractions
+\item LUP decomposition and solve.
+\end{itemize}
+\item Method 2: \begin{itemize}
+\item Distance squared for one pair of vertices: $(n-1)$ subtractions, $(n-1)$
+      squares, $(n-1)$ sums.
+\item Number of unique pairs with non-zero distance: $n(n-1)/2$
+\item Bunch-Kaufman decomposition and solve.
+\end{itemize} \end{itemize}
+
+Long story short, the setup for the first method is $\mathcal{O}(n^2)$ in time,
+the second method is $\mathcal{O}(n^3)$. Both decompositions are
+$\mathcal{O}(n^3)$ with a slight advantage for Bunch-Kaufman. Method 1 is
+preferable.
 \end{document}
