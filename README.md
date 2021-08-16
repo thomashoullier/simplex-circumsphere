@@ -33,13 +33,14 @@ I used the nice Geogebra sample by Steve Phelps to generate a test
 case for a tetrahedron [1].
 
 ## Further discussion
-There is an alternate method for the simplex circumsphere highlighted
+There is an alternative method for the simplex circumsphere highlighted
 by Westendorp [3] from a work by Coxeter [5]. It involves the inverse
 of the matrix used in the Cayley-Menger determinant (which is the
-volume of a simplex [4]).
+volume of a simplex [4]). I believe the method I implemented is
+more efficient than this alternative method if we start from a
+set of vertices coordinates (please refer to the
+[note](doc/simplex-circumsphere.tex)).
 
-There is a fair bit of chance that this will be faster, I will
-investigate.
 
 ## References
 1. [Simplex circumsphere in Geogebra by Steve Phelps](https://www.geogebra.org/material/show/id/Ht8FrBuZ)
