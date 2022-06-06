@@ -2,6 +2,8 @@
 `simplex-circumsphere` implements the computation of the n-simplex
 circumsphere.
 
+Refer to the short note for details [TODO].
+
 ## Usage
 **center-radius** vertices => center radius
 
@@ -12,10 +14,6 @@ given its vertices.
 * `radius`: Radius of the circumsphere, eg `2.5`
 
 Will return nil if the simplex is degenerate.
-
-## Proof
-I include a short note on the computation in a nice latex format
-[here](doc/simplex-circumsphere.tex), this is adapted from Gautam Manohar [2].
 
 ## Dependencies
 * `simplex-circumsphere`:
@@ -38,9 +36,7 @@ by Westendorp [3] from a work by Coxeter [5]. It involves the inverse
 of the matrix used in the Cayley-Menger determinant (which is the
 volume of a simplex [4]). I believe the method I implemented is
 more efficient than this alternative method if we start from a
-set of vertices coordinates (please refer to the
-[note](doc/simplex-circumsphere.tex)).
-
+set of vertices coordinates (please refer to the note [TODO]).
 
 ## References
 1. [Simplex circumsphere in Geogebra by Steve Phelps](https://www.geogebra.org/material/show/id/Ht8FrBuZ)
@@ -49,5 +45,3 @@ set of vertices coordinates (please refer to the
 4. [Wikipedia: Cayley-Menger determinant](https://en.wikipedia.org/wiki/Cayley%E2%80%93Menger_determinant#Finding_the_circumradius_of_a_simplex)
 5. H. S. M. Coxeter, “The Circumradius of the General Simplex,” The
    Mathematical Gazette 15(210), 229–231 (1930). [DOI](doi.org/10.2307/3607191)
-  
-
