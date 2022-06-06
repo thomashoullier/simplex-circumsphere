@@ -2,7 +2,7 @@
 `simplex-circumsphere` implements the computation of the n-simplex
 circumsphere.
 
-Refer to the short note for details [TODO].
+A writeup may be found on my website [6].
 
 ## Usage
 **center-radius** vertices => center radius
@@ -36,7 +36,7 @@ by Westendorp [3] from a work by Coxeter [5]. It involves the inverse
 of the matrix used in the Cayley-Menger determinant (which is the
 volume of a simplex [4]). I believe the method I implemented is
 more efficient than this alternative method if we start from a
-set of vertices coordinates (please refer to the note [TODO]).
+set of vertices coordinates (please refer to the writeup [6]).
 
 ## References
 1. [Simplex circumsphere in Geogebra by Steve Phelps](https://www.geogebra.org/material/show/id/Ht8FrBuZ)
@@ -45,3 +45,4 @@ set of vertices coordinates (please refer to the note [TODO]).
 4. [Wikipedia: Cayley-Menger determinant](https://en.wikipedia.org/wiki/Cayley%E2%80%93Menger_determinant#Finding_the_circumradius_of_a_simplex)
 5. H. S. M. Coxeter, “The Circumradius of the General Simplex,” The
    Mathematical Gazette 15(210), 229–231 (1930). [DOI](doi.org/10.2307/3607191)
+6. [n-Simplex circumsphere writeup](https://thomashoullier.com/writeups/simplex-circumsphere/simplex-circumsphere.html)
